@@ -14,6 +14,8 @@ echo Image Directory: $image_dir
 
 echo  Script Directory: $script_dir #prints the script directory
 
+#cd
+
 cd $(echo $image_dir | tr -d '\r') #changes directory
  
 
