@@ -1,7 +1,9 @@
 #!/bin/bash
 
+set -v #Used to debug the shell script by making it verbose
+
 echo 'Checking for Missing Depencencies'
-echo 'Auto-Inking-Bash-Script v1.0 -Written by Samuel Onome Harrison'
+echo 'Auto-Inking-Bash-Script v1.0.1 -Written by Samuel Onome Harrison'
 echo $(convert --version)
 echo $(potrace --version)
 
@@ -10,14 +12,13 @@ $(read -p 'Insert Images Directory below, Press Enter to continue. >>>>>>>') #As
 read -p 'Insert: ' image_dir #stores user input to a variable
 script_dir=$(pwd) #Get's the script current directory and saves it to a variable
 
-echo Image Directory: $image_dir  
+echo Image Directory: $image_dir | tr -d '\r' #Reads the files in the image directory  
 
 echo  Script Directory: $script_dir #prints the script directory
 
-#cd
+ln -s $image_dir | tr -d '\r' $y  #saves the image directory as a symbolic file link
 
-cd $(echo $image_dir | tr -d '\r') #changes directory
- 
+cd $y 
 
 images=$(ls *.png) #prints all .png files in the folder
 
@@ -34,7 +35,7 @@ do
 	rm $cell.bmp ##Removes .bmp files
 done
 
-echo 'Finished Successfully'
+echo 'Finished Successfully' #update this to check for errors during runtime
 exit
 
 #Please note: It doesn't work well with spaces in folders names
