@@ -8,9 +8,77 @@ set -x #for debugging
 
 echo 'Checking for Missing Depencencies'
 echo 'Auto-Inking-Bash-Script v1.1 -Written by Samuel Onome Harrison'
-echo $(convert --version)
-echo $(potrace --version)
+#echo $(convert --version)
+#echo $(potrace --version)
 
+
+install_potrace (){
+
+	# Installs the potrace library
+	$(sudo apt update)
+	$(sudo apt install potrace)
+	exit
+}
+
+
+install_imageMagick () { #Doesn't work
+
+	# Installs the image magick library
+	$(sudo apt update)
+	#$(sudo apt install imagemagick-6.q16)
+	$(sudo apt install build-essential)
+	$(wget https://www.imagemagick.org/download/ImageMagick.tar.gz)
+	$(mkdir ImageMagick && tar xzvf ImageMagick.tar.gz && cd ImageMagick)
+	$(./configure)
+	$(make)
+	$(sudo apt install make)
+	$(sudo make install)
+	$(sudo ldconfig /usr/local/lib)
+	exit
+}
+
+
+checking_for_dependencies (){
+	# Checks for missing Dependencies
+	if ! [ -x "$(convert --version )" ]; then
+  	
+  	echo 'Error: ImageMagick is not installed.' >&2
+  	
+  	install_imageMagick
+  	exit 1
+	
+	fi
+	
+	# Checks for missing dependencies
+	if ! [ -x "$(potrace --version )" ] ; then
+  	
+  	echo 'Error: Potrace is not installed.' >&2
+	
+	install_potrace
+	exit 1
+	
+	fi
+
+	# If dependencies are installed
+	if  [ -x "$(potrace --version )" ] ; then
+  	
+  	echo $(potrace --version) >&2
+	
+	fi
+
+	# If Dependencies are installed
+
+	if [ -x "$(convert --version )" ]; then
+  	
+  	echo $(convert --version) >&2
+  	
+  	return
+	
+	fi
+
+
+
+}
 
 
 remove_bmp_files (){ #works
@@ -186,7 +254,7 @@ function run_main_loop {
 
 
 ###########################......MAIN_CODES.........################################
-
+checking_for_dependencies
 
 
 run_main_loop #code breaks here, runs code in home directory
