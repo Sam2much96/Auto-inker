@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash 
 
 #Spaces matter alot in bash script
 
@@ -21,14 +21,14 @@ install_potrace (){
 }
 
 
-install_imageMagick () { #Doesn't work
-
+install_imageMagick () { #Doesn't work, Use these Commands to Manually install ImageMagick
+	
 	# Installs the image magick library
-	$(sudo apt update)
+	$(sudo apt-get update -y)
 	#$(sudo apt install imagemagick-6.q16)
 	$(sudo apt install build-essential)
 	$(wget https://www.imagemagick.org/download/ImageMagick.tar.gz)
-	$(mkdir ImageMagick && tar xzvf ImageMagick.tar.gz && cd ImageMagick)
+	$(mkdir /home/$(whoami)/ImageMagick && tar xzvf ImageMagick.tar.gz && cd /home/$(whoami)/ImageMagick)
 	$(./configure)
 	$(make)
 	$(sudo apt install make)
@@ -44,7 +44,7 @@ checking_for_dependencies (){
   	
   	echo 'Error: ImageMagick is not installed.' >&2
   	
-  	install_imageMagick
+  	#install_imageMagick
   	exit 1
 	
 	fi
@@ -54,7 +54,7 @@ checking_for_dependencies (){
   	
   	echo 'Error: Potrace is not installed.' >&2
 	
-	install_potrace
+	#install_potrace
 	exit 1
 	
 	fi
