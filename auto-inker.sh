@@ -8,8 +8,6 @@ set -x #for debugging
 
 echo 'Checking for Missing Depencencies'
 echo 'Auto-Inking-Bash-Script v1.1 -Written by Samuel Onome Harrison'
-#echo $(convert --version)
-#echo $(potrace --version)
 
 
 install_potrace (){
@@ -40,41 +38,17 @@ install_imageMagick () { #Doesn't work, Use these Commands to Manually install I
 
 checking_for_dependencies (){
 	# Checks for missing Dependencies
-	if ! [ -x "$(convert --version )" ]; then
-  	
-  	echo 'Error: ImageMagick is not installed.' >&2
-  	
-  	#install_imageMagick
-  	exit 1
 	
-	fi
-	
-	# Checks for missing dependencies
-	if ! [ -x "$(potrace --version )" ] ; then
+	echo 'Is ImageMagick Installed : ' [ $(dpkg -s Imagemagick | grep Status) ] 
+	echo 'Is Potrace installed : ' [ $(dpkg -s potrace | grep Status) ]
   	
-  	echo 'Error: Potrace is not installed.' >&2
-	
-	#install_potrace
-	exit 1
-	
-	fi
-
-	# If dependencies are installed
-	if  [ -x "$(potrace --version )" ] ; then
-  	
-  	echo $(potrace --version) >&2
-	
-	fi
-
-	# If Dependencies are installed
-
-	if [ -x "$(convert --version )" ]; then
-  	
-  	echo $(convert --version) >&2
-  	
+	echo $(convert --version)
+	echo $(potrace --version)
   	return
 	
-	fi
+	
+	
+	
 
 
 
@@ -254,16 +228,40 @@ function run_main_loop {
 
 
 ###########################......MAIN_CODES.........################################
-checking_for_dependencies
+
+$(read -p 'What Should i do? >>>>Press 'Enter' to continue') #Asks for user input
+
+read -p 'Action: ' action #stores user input to a variable
+#Get's the users preferred action and saves it to a variable
+
+##### Main Logic ####
+case $action in
+	check_dependencies )
+		checking_for_dependencies;;
+
+	run_main_loop )
+		run_main_loop
+		echo the .png images are in $image_dir : $images , with total count of $image_count images #prints out the png files in the image directory
+		;; 
+	sign )
+		signature
+		;;
+	install_potrace )
+		install_potrace;
+		;;
+	intall_imagemagick )
+		install_imageMagick
+		;;
+	*)
+    echo $action " is unknown. The only allowed actions are [check_dependencies], [run_main_loop], [sign], [install_potrace], [install_imageMagick]"
+    ;;
+esac
+ 
 
 
-run_main_loop #code breaks here, runs code in home directory
-
-
-echo the .png images are in $image_dir : $images , with total count of $image_count images #prints out the png files in the image directory
 
 echo 'Finished Successfully'
-signature
+
 
 set +x #For debugging
 exit
