@@ -8,28 +8,25 @@ If it fails to run, it'll detect the failed jpeg and png files in it's home dire
 [![Watch a playtest demo video](https://img.youtube.com/vi/NUYO79E72_A/hqdefault.jpg)](https://youtu.be/NUYO79E72_A)
 
 How to Use:
-(1) The script checks if ImageMagick and Potrace are involved. You can manually install them by running the following codes
-       
-       
-    
-       Install Potrace
-        $sudo apt install potrace 
-      
-       Install Imagemagick
-        $(sudo apt-get update -y)	
-	    $(sudo apt install build-essential)
-	    $(wget https://www.imagemagick.org/download/ImageMagick.tar.gz)
-	    $(mkdir /home/$(whoami)/ImageMagick && tar xzvf ImageMagick.tar.gz && cd /home/$(whoami)/ImageMagick)
-	    $(./configure)
-	    $(make)
-	    $(sudo apt install make)
-	    $(sudo make install)
-	    $(sudo ldconfig /usr/local/lib)
-       
+(1) The script checks if ImageMagick and Potrace are involved. 
+	You can check them by running the codes
+		$./auto-inker.sh
+		reply: $'what_should i do?'
+		$check_dependencies
+
+	You can also manually install them by running the following codes
+		$./auto-inker.sh
+		reply: $'what should i do?'
+		$install_potrace 
+			or
+		$install_imagemagick
+
 (1) Convert Images to Black and White, no transparency
-(2) Open terminal and write the following commands
+(2) Run the script ./auto-inker.sh
+	reply: $'what should i do?'
+	$run_main_loop
     
     $cd/Auto-inker
     $chmod +x auto-inker.sh  (Use only when running auto-inker for the first time)
     $./auto-inker.sh
-(3) Enter the image directory and let Auto-inker do it's work
+(3) Enter the image directory, when running main loop and let Auto-inker do it's work
