@@ -226,6 +226,18 @@ function run_main_loop {
 
 }
 
+function install_imageMagick_on_termux {
+	$(pkg update)
+	$(pkg upgrade)
+	echo $(pkg search imagemagick)
+	$(pkg install imagemagick)
+}
+
+function install_potrace_on_termux { $(pkg install potrace) }
+
+
+
+
 
 ###########################......MAIN_CODES.........################################
 
@@ -251,6 +263,12 @@ case $action in
 		;;
 	intall_imagemagick )
 		install_imageMagick
+		;;
+	install_potrace_on_termux )
+		install_potrace_on_termux
+		;;
+	install_imageMagick_on_termux )
+		install_potrace_on_termux
 		;;
 	*)
     echo $action " is unknown. The only allowed actions are [check_dependencies], [run_main_loop], [sign], [install_potrace], [install_imageMagick]"
