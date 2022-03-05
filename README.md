@@ -9,7 +9,9 @@ If it fails to run, it'll detect the failed jpeg and png files in it's home dire
 
 How to Use:
 (1) The script checks if ImageMagick and Potrace are involved. You can manually install them by running the following codes
-        $sudo apt update
+       
+       
+    
        Install Potrace
         $sudo apt install potrace 
       
