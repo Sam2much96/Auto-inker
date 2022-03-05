@@ -8,7 +8,23 @@ If it fails to run, it'll detect the failed jpeg and png files in it's home dire
 [![Watch a playtest demo video](https://img.youtube.com/vi/NUYO79E72_A/hqdefault.jpg)](https://youtu.be/NUYO79E72_A)
 
 How to Use:
-(1) Convert Image to Black and White, no transparency
+(1) The script checks if ImageMagick and Potrace are involved. You can manually install them by running the following codes
+        $sudo apt update
+       Install Potrace
+        $sudo apt install potrace 
+      
+       Install Imagemagick
+        $(sudo apt-get update -y)	
+	    $(sudo apt install build-essential)
+	    $(wget https://www.imagemagick.org/download/ImageMagick.tar.gz)
+	    $(mkdir /home/$(whoami)/ImageMagick && tar xzvf ImageMagick.tar.gz && cd /home/$(whoami)/ImageMagick)
+	    $(./configure)
+	    $(make)
+	    $(sudo apt install make)
+	    $(sudo make install)
+	    $(sudo ldconfig /usr/local/lib)
+       
+(1) Convert Images to Black and White, no transparency
 (2) Open terminal and write the following commands
     
     $cd/Auto-inker
