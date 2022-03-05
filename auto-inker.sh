@@ -226,9 +226,13 @@ function run_main_loop {
 
 }
 
-function install_imageMagick_on_termux { $(pkg install imagemagick) }
+function install_imageMagick_on_termux { 
+	$(pkg install imagemagick) 
+}
 
-function install_potrace_on_termux { $(pkg install potrace) }
+function install_potrace_on_termux { 
+	$(pkg install potrace) 
+}
 
 
 
@@ -266,7 +270,7 @@ case $action in
 		install_potrace_on_termux
 		;;
 	*)
-    echo $action " is unknown. The only allowed actions are [check_dependencies], [run_main_loop], [sign], [install_potrace], [install_imageMagick]"
+    echo $action " is unknown. The only allowed actions are [check_dependencies], [run_main_loop], [sign], [install_potrace], [install_imageMagick] [install_imageMagick_on_termux] [install_potrace_on_termux]"
     ;;
 esac
  
