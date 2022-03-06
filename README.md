@@ -7,6 +7,8 @@ If it fails to run, it'll detect the failed jpeg and png files in it's home dire
 
 [![Watch a playtest demo video](https://img.youtube.com/vi/NUYO79E72_A/hqdefault.jpg)](https://youtu.be/NUYO79E72_A)
 
+	Note: It should work on newer versions of Termux (androids), but my test device had broken packages, so i might have to rewrite the core code to use linked libraries
+
 How to Use:
 (1) The script checks if ImageMagick and Potrace are involved. 
 	You can check them by running the codes
