@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash 
 
 #Spaces matter alot in bash script
 
@@ -8,9 +8,51 @@ set -x #for debugging
 
 echo 'Checking for Missing Depencencies'
 echo 'Auto-Inking-Bash-Script v1.1 -Written by Samuel Onome Harrison'
-echo $(convert --version)
-echo $(potrace --version)
 
+
+install_potrace (){
+
+	# Installs the potrace library
+	$(sudo apt update)
+	$(sudo apt install potrace)
+	exit
+}
+
+
+install_imageMagick () { #Doesn't work, Use these Commands to Manually install ImageMagick
+	
+	# Installs the image magick library
+	$(sudo apt-get update -y)
+	#$(sudo apt install imagemagick-6.q16)
+	$(sudo apt install build-essential)
+	$(wget https://www.imagemagick.org/download/ImageMagick.tar.gz)
+	$(mkdir /home/$(whoami)/ImageMagick && tar xzvf ImageMagick.tar.gz && cd /home/$(whoami)/ImageMagick)
+	$(./configure)
+	$(make)
+	$(sudo apt install make)
+	$(sudo make install)
+	$(sudo ldconfig /usr/local/lib)
+	exit
+}
+
+
+checking_for_dependencies (){
+	# Checks for missing Dependencies
+	
+	echo 'Is ImageMagick Installed : ' [ $(dpkg -s Imagemagick | grep Status) ] 
+	echo 'Is Potrace installed : ' [ $(dpkg -s potrace | grep Status) ]
+  	
+	echo $(convert --version)
+	echo $(potrace --version)
+  	return
+	
+	
+	
+	
+
+
+
+}
 
 
 remove_bmp_files (){ #works
@@ -184,18 +226,59 @@ function run_main_loop {
 
 }
 
+function install_imageMagick_on_termux { 
+	$(pkg install imagemagick) 
+}
+
+function install_potrace_on_termux { 
+	$(pkg install potrace) 
+}
+
+
+
+
 
 ###########################......MAIN_CODES.........################################
 
+$(read -p 'What Should i do? >>>>Press 'Enter' to continue') #Asks for user input
+
+read -p 'Action: ' action #stores user input to a variable
+#Get's the users preferred action and saves it to a variable
+
+##### Main Logic ####
+case $action in
+	check_dependencies )
+		checking_for_dependencies;;
+
+	run_main_loop )
+		run_main_loop
+		echo the .png images are in $image_dir : $images , with total count of $image_count images #prints out the png files in the image directory
+		;; 
+	sign )
+		signature
+		;;
+	install_potrace )
+		install_potrace;
+		;;
+	intall_imagemagick )
+		install_imageMagick
+		;;
+	install_potrace_on_termux )
+		install_potrace_on_termux
+		;;
+	install_imageMagick_on_termux )
+		install_potrace_on_termux
+		;;
+	*)
+    echo $action " is unknown. The only allowed actions are [check_dependencies], [run_main_loop], [sign], [install_potrace], [install_imageMagick] [install_imageMagick_on_termux] [install_potrace_on_termux]"
+    ;;
+esac
+ 
 
 
-run_main_loop #code breaks here, runs code in home directory
-
-
-echo the .png images are in $image_dir : $images , with total count of $image_count images #prints out the png files in the image directory
 
 echo 'Finished Successfully'
-signature
+
 
 set +x #For debugging
 exit
