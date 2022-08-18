@@ -240,7 +240,7 @@ function install_potrace_on_termux {
 
 ###########################......MAIN_CODES.........################################
 
-$(read -p 'What Should i do? >>>>Press 'Enter' to continue') #Asks for user input
+$(read -p 'What Should i do? >>>>Press 'Enter' to continue_____options: [run_main_loop][check_dependencies] [sign], [install_potrace], [install_imageMagick]') #Asks for user input
 
 read -p 'Action: ' action #stores user input to a variable
 #Get's the users preferred action and saves it to a variable
