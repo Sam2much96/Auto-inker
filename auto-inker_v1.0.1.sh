@@ -1,7 +1,17 @@
 #!/bin/bash 
 
 #Spaces matter alot in bash script
-# goals (1) integrate with blender, (2) Use in a test demo production (3) 2d animation automated render pipeline
+# goals 
+
+# *************************************************
+# godot3-Dystopia-game by INhumanity_arts
+# Released under MIT License
+# *************************************************
+# Auto-inker
+# Shell script that automates vectorization within a linux environment
+# To Do:
+#(1) goals (1) integrate with blender, (2) Use in a test demo production (3) 2d animation automated render pipeline
+# *************************************************
 
 
 set -x #for debugging
