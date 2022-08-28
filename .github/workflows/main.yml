@@ -10,7 +10,7 @@ jobs:
           args: |
             git clone https://github.com/Sam2much96/Auto-inker
             cd Auto-inker
-            ./Auto-inker.sh
+            echo ls -al
    
           
         env:
