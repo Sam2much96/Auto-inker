@@ -9,7 +9,7 @@ jobs:
         with:
           args: arg1 arg2
         env:
-          REMOTE_BASH_URL :  https://github.com/Sam2much96/Auto-inker/blob/main/auto-inker.sh
+          REMOTE_BASH_URL : https://raw.githubusercontent.com/Auto-inker/Auto-inker/master/uname -a 
       
            
             
