@@ -8,9 +8,8 @@ jobs:
         uses: shinhwagk/remote-bash@0.0.1
         with:
           args: |
-            git clone https://github.com/Sam2much96/Auto-inker
-            cd Auto-inker
-            echo ls -al
+            git clone https://github.com/Sam2much96/Auto-ier
+          
    
           
         env:
