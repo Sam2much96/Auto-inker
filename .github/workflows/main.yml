@@ -29,6 +29,4 @@ jobs:
       - name: Run a one-line script
         run:  |
           git clone https://github.com/Sam2much96/Auto-inker
-          cd ~/Auto-inker
-          ls
-          ./auto-inker.sh
+        
