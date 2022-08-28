@@ -34,3 +34,5 @@ jobs:
       - name: Run a multi-line script
         run: |
           ./auto-inker.sh
+          check_dependencies
+          
