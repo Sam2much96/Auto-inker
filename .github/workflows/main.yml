@@ -9,7 +9,7 @@ jobs:
         with:
           args: uname -a
         env:
-          REMOTE_BASH_URL : https://raw.githubusercontent.com/Auto-inker/Auto-inker/master/test.sh 
+          REMOTE_BASH_URL : https://raw.githubusercontent.com/shinhwagk/remote-bash/master/test.sh
       
            
             
